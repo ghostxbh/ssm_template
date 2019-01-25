@@ -11,5 +11,5 @@
 ## 关注一波
 * [CSDN](https://blog.csdn.net/ghostxbh)
 * [知乎](https://www.zhihu.com/people/ghostxbh)
-* [个人博客](www.uzykj.com)
+* [个人博客](http://www.uzykj.com)
 * ![微信公众号](https://github.com/ghostxbh/ssm_template/blob/master/picture/wxgzh.jpg)
