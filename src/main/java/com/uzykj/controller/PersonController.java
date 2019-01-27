@@ -20,35 +20,26 @@ public class PersonController {
     private PersonService personService;
 
     @RequestMapping("/")
-    @ResponseBody
     public String goHome() {
         return "person";
     }
 
     @RequestMapping("/add")
     @ResponseBody
-    public boolean add(String name, String sex, Integer age) {
+    public boolean add(String name, Integer sex, Integer age) {
         Person person = new Person();
         person.setName(name);
-        if (sex.equals("男")) {
-            person.setSex(1);
-        } else {
-            person.setSex(2);
-        }
+        person.setSex(sex);
         person.setAge(age);
         return personService.insertOne(person);
     }
 
     @RequestMapping("/update")
     @ResponseBody
-    public boolean update(String name, String sex, Integer age) {
+    public boolean update(String name, Integer sex, Integer age) {
         Person person = new Person();
         person.setName(name);
-        if (sex.equals("男")) {
-            person.setSex(1);
-        } else {
-            person.setSex(2);
-        }
+        person.setSex(sex);
         person.setAge(age);
         return personService.updateOne(person);
     }
