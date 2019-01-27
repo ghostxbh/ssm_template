@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "mybatis-3-mapper.dtd">
+<mapper namespace="com.uzykj.dao.PersonDao">
+
+    <insert id="insertOne" parameterType="com.uzykj.entity.Person">
+        INSERT INTO
+        person(id,name,sex,age)
+        VALUES (
+        null,
+        #{person.name},
+        #{person.sex},
+        #{person.age})
+    </insert>
+
+    <update id="updateOne" parameterType="com.uzykj.entity.Person">
+        UPDATE user
+        <set>
+            <if test="person.name != null">name = #{person.name},</if>
+            <if test="person.sex != null">sex = #{person.sex},</if>
+            <if test="person.age != null">age = #{person.age}</if>
+        </set>
+        <where>
+            id = #{person.id}
+        </where>
+    </update>
+
+    <delete id="deleteOne" parameterType="int">
+        delete from person
+        where id = #{id}
+    </delete>
+
+    <select id="selectOne" resultType="com.uzykj.entity.Person" parameterType="int">
+        SELECT
+        id,name,sex,age
+        FROM person
+        WHERE
+        id = #{id}
+    </select>
+
+    <select id="selectAll" resultType="com.uzykj.entity.Person">
+        SELECT
+        id,name,sex,age
+        FROM person
+    </select>
+
+</mapper>
