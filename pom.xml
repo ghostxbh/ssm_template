@@ -160,6 +160,16 @@
       <artifactId>junit</artifactId>
       <version>RELEASE</version>
     </dependency>
+      <dependency>
+          <groupId>com.mchange</groupId>
+          <artifactId>mchange-commons-java</artifactId>
+          <version>RELEASE</version>
+      </dependency>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.13</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>ssm_template</finalName>
