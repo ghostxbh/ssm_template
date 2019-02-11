@@ -1,7 +1,12 @@
 package com.uzykj.controller;
 
+
+import com.uzykj.emun.ExceptionEmun;
 import com.uzykj.entity.Person;
+import com.uzykj.exception.SSMException;
 import com.uzykj.service.PersonService;
+import com.uzykj.utils.JsonResult;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,12 +31,22 @@ public class PersonController {
 
     @RequestMapping("/add")
     @ResponseBody
-    public boolean add(String name, Integer sex, Integer age) {
-        Person person = new Person();
-        person.setName(name);
-        person.setSex(sex);
-        person.setAge(age);
-        return personService.insertOne(person);
+    public JsonResult add(String name, Integer sex, Integer age) {
+        JsonResult result = new JsonResult();
+        if (!StringUtils.isEmpty(name)&&sex!=null&&age!=null)
+        {
+            Person person = new Person();
+            person.setName(name);
+            person.setSex(sex);
+            person.setAge(age);
+            personService.insertOne(person);
+            result.setResult(personService.selectAll());
+            return result;
+        }else
+            {
+                throw new SSMException(ExceptionEmun.PARAMEX.getMeg());
+            }
+
     }
 
     @RequestMapping("/update")
